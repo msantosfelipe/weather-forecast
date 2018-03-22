@@ -1,0 +1,35 @@
+$background: #ebf1f1;
+$primary: #f2ae43;
+// Gerais
+html,
+body {
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: $background;
+}
+
+.main {
+    min-height: 100vh;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.titulo {
+    padding-top: 2em;
+}
+
+.space-up {
+    padding-top: 1em;
+}
+
+// Navbar
+.color-nav {
+    background-color: $primary;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white
+}
