@@ -39,6 +39,7 @@ export class CidadeCadastroComponent extends BaseComponent implements OnInit {
     this.hideAlertaDanger();
     if (this.nomeCidade) {
       this.listaCidadesPesquisadas = new Array<Cidade>();
+      this.exibirLoading();
       this.weatherService.buscarCidadesPorNome(this.nomeCidade)
         .subscribe((response: any) => {
           if (response && response.count > 0) {
@@ -49,7 +50,9 @@ export class CidadeCadastroComponent extends BaseComponent implements OnInit {
           } else {
             this.exibirAlertaDanger('Cidade não encontrada');
           }
+          this.esconderLoading();
         }, (error) => {
+          this.esconderLoading();
           this.exibirAlertaDanger('Ocorreu um erro, tente novamente');
         });
     }
