@@ -4,11 +4,18 @@ import { CidadeCadastroComponent } from './cidade-cadastro/cidade-cadastro.compo
 import { CidadeDetalheComponent } from './cidade-detalhe/cidade-detalhe.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LoadingModule, ANIMATION_TYPES } from 'ngx-loading';
 
 @NgModule({
   imports: [
     CommonModule,
-    CompartilhadoModule
+    CompartilhadoModule,
+    LoadingModule.forRoot({
+      animationType: ANIMATION_TYPES.circleSwish,
+      backdropBackgroundColour: 'rgba(0,0,0,0.1)',
+      backdropBorderRadius: '4px',
+      primaryColour: '#b3be3d',
+    })
   ],
   declarations: [
     CidadeCadastroComponent,

@@ -2,27 +2,24 @@ import { Cidade } from './../../../model/cidade.model';
 import { WeatherService } from './../../../servico/weather.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
+import { BaseComponent } from '../../base.component';
 @Component({
   selector: 'app-cidade-cadastro',
   templateUrl: './cidade-cadastro.component.html',
   styleUrls: ['./cidade-cadastro.component.scss']
 })
-export class CidadeCadastroComponent implements OnInit {
+export class CidadeCadastroComponent extends BaseComponent implements OnInit {
 
   public nomeCidade: string;
   public listaCidadesPesquisadas: Cidade[];
   public listaCidadesAdicionadas: Cidade[];
 
-  public exibirAlertDanger: boolean;
-  public exibirAlertWarning: boolean;
-  public msgAlertDanger: string;
-  public msgAlertWarning: string;
-
   constructor(
     private router: Router,
     private weatherService: WeatherService
-  ) { }
+  ) {
+    super();
+  }
 
   ngOnInit() {
     this.listaCidadesPesquisadas = new Array<Cidade>();
@@ -36,10 +33,6 @@ export class CidadeCadastroComponent implements OnInit {
   limpar() {
     this.listaCidadesPesquisadas = new Array<Cidade>();
     this.nomeCidade = '';
-  }
-
-  isVazia(lista: any[]) {
-    return lista && lista.length === 0;
   }
 
   pesquisar() {
@@ -60,16 +53,6 @@ export class CidadeCadastroComponent implements OnInit {
           this.exibirAlertaDanger('Ocorreu um erro, tente novamente');
         });
     }
-  }
-
-  exibirAlertaDanger(mensagem: string): void {
-    this.msgAlertDanger = mensagem;
-    this.exibirAlertDanger = true;
-  }
-
-  hideAlertaDanger(): void {
-    this.msgAlertDanger = '';
-    this.exibirAlertDanger = false;
   }
 
   voltar() {
