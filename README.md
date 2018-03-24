@@ -1,6 +1,6 @@
 # WeatherForecast
 
-Deploy no Heroku: https://fathomless-chamber-48795.herokuapp.com/cidades
+Deploy no Heroku: https://fathomless-chamber-48795.herokuapp.com
 
 
 Weather Forecast
