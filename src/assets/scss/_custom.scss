@@ -7,6 +7,11 @@ body {
     padding: 0;
     margin: 0;
     background-color: $background;
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .main {
@@ -18,11 +23,32 @@ body {
 }
 
 .titulo {
-    padding-top: 2em;
+    padding-top: 1em;
+    color: #ebf1f1;
+    font-weight: bolder;
+    font-size: 2em;
+    padding-left: 2.5em;
 }
 
 .space-up {
     padding-top: 1em;
+}
+
+.space-up-2x {
+    padding-top: 2em;
+}
+
+.space-down {
+    padding-bottom: 1em;
+}
+
+.space-down-2x {
+    padding-bottom: 2em;
+}
+
+.img-link {
+    cursor: pointer;
+    width: 2em;
 }
 
 // Navbar
@@ -30,6 +56,17 @@ body {
     background-color: $primary;
 }
 
+// Home
+.banner {
+    margin-top: 10vh;
+}
+
 .navbar-light .navbar-nav .nav-link {
     color: white
+}
+
+// Cidades
+.card {
+    background-color: $background;
+    margin-bottom: 2em;
 }

@@ -14,6 +14,7 @@ export class WeatherService {
   buscarCidadesPorNome(cidade: string) {
     const param = new HttpParams()
       .append('q', cidade)
+      .append('lang', 'pt')
       .append('appid', environment.apiKey);
     return this.http.get(`${environment.apiRoot}/find`, { params: param });
   }

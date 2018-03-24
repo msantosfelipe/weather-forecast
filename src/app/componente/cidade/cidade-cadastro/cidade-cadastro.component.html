@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
-<div class="container-fluid titulo">
-    <h3>Cidades</h3>
+<div class="container-fluid titulo space-down">
+    <span>Cidades</span>
 </div>
-<div class="container space-up">
+<div class="container space-up card">
     <div *ngIf="exibirAlertWarning" class="alert alert-warning alert-dismissible fade show text-center" role="alert">
         <strong>Holy guacamole!</strong> You should check in on some of those fields below.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -13,24 +13,96 @@
         <span>
             {{ msgAlertDanger }}
         </span>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" class="close" (click)="hideAlertaDanger()" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
     </div>
-    <h4>Cadastrar nova cidade:</h4>
+    <h4>Buscar nova cidade:</h4>
     <div class="container">
         <form>
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <mat-form-field class="full-width">
-                        <input [(ngModel)]="nomeCidade" name="novaCidade" matInput placeholder="Nome">
+                        <input [(ngModel)]="nomeCidade" name="novaCidade" matInput placeholder="Nome" maxlength="256">
                     </mat-form-field>
                 </div>
                 <div class="col-md-6">
                     <button (click)="pesquisar()" type="button" class="btn btn-primary">Pesquisar</button>
-                    <button (click)="voltar()" type="button" class="btn btn-secondary">Voltar</button>
+                    <button (click)="limpar()" *ngIf="!isVazia(listaCidadesPesquisadas)" type="button" class="btn btn-secondary">Limpar</button>
+                    <button (click)="voltar()" type="button" class="btn btn-light">Voltar</button>
+                </div>
+                <div class="container space-up" *ngIf="!isVazia(listaCidadesPesquisadas)">
+                    <div class="grid-pesquisa">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            Cidade:
+                                        </td>
+                                        <td>
+                                            Temperatura:
+                                        </td>
+                                        <td>
+                                            Coordenadas:
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let cidade of listaCidadesPesquisadas">
+                                        <td>{{ cidade.name }}, {{ cidade.sys.country }}</td>
+                                        <td>{{ cidade.main.temp | temperaturaToCelsiusPipe: 'Kelvin' }}°C</td>
+                                        <td>
+                                            <a target="_blank" [href]="verMapa(cidade)">
+                                                <img class="img-link img-fluid" src="../../../../assets/images/maps.png" alt="Ver mapa" />
+                                            </a>
+                                            {{ cidade.coord.lat }}, {{ cidade.coord.lon }}
+                                        </td>
+                                        <td>
+                                            <img (click)="adicionar(cidade)" class="img-link img-fluid" src="../../../../assets/images/add.png" alt="Adicionar" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
+    </div>
+</div>
+<div class="container space-up card">
+    <h4>Cidades adicionadas:</h4>
+    <div class="container space-up space-down text-center" *ngIf="isVazia(listaCidadesAdicionadas)">
+        <span>Nenhuma cidade adicionada</span>
+    </div>
+    <div class="container space-up" *ngIf="!isVazia(listaCidadesAdicionadas)">
+        <div class="grid-pesquisa">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td>
+                                Cidade:
+                            </td>
+                            <td>
+                                Coordenadas:
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cidade of listaCidadesAdicionadas">
+                            <td>{{ cidade.name }}, {{ cidade.sys.country }}</td>
+                            <td>
+                                <a target="_blank" [href]="verMapa(cidade)">
+                                    <img class="img-link img-fluid" src="../../../../assets/images/maps.png" alt="Ver mapa" />
+                                </a>
+                                {{ cidade.coord.lat }}, {{ cidade.coord.lon }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>

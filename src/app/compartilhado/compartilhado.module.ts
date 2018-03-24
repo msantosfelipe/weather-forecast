@@ -3,6 +3,7 @@ import { NavbarModule } from './../componente/navbar/navbar.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
+import { TemperaturaToCelsiusPipe } from './pipe/temperatura-to-celsius.pipe';
 
 @NgModule({
   imports: [
@@ -12,11 +13,14 @@ import { MatInputModule } from '@angular/material/input';
 
     MatInputModule
   ],
-  declarations: [],
+  declarations: [
+    TemperaturaToCelsiusPipe
+  ],
   exports: [
     FormsModule,
     NavbarModule,
-    MatInputModule
+    MatInputModule,
+    TemperaturaToCelsiusPipe
   ]
 })
 export class CompartilhadoModule { }
