@@ -1,3 +1,4 @@
+import { RelatorioAnalytcsComponent } from './../relatorio-analytcs/relatorio-analytcs.component';
 import { CidadeDetalheComponent } from './../cidade/cidade-detalhe/cidade-detalhe.component';
 import { CidadeCadastroComponent } from './../cidade/cidade-cadastro/cidade-cadastro.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -6,7 +7,8 @@ import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   { path: 'cidades', component: CidadeCadastroComponent },
-  { path: 'cidades/:id', component: CidadeDetalheComponent }
+  { path: 'cidades/:id', component: CidadeDetalheComponent },
+  { path: 'relatorios', component: RelatorioAnalytcsComponent }
 ];
 
 @NgModule({

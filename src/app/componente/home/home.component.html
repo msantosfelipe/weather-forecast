@@ -1,10 +1,33 @@
 <app-navbar></app-navbar>
 <div class="container banner">
     <div class="jumbotron">
-        <h1 class="display-4">Weather Forecast</h1>
-        <p class="lead">Aplicação em desenvolvimento em Angular 5.</p>
-        <p class="lead">
-            <a class="btn btn-primary btn-lg" target="_blank" href="https://github.com/msantosfelipe/weather-forecast" role="button">Github</a>
-        </p>
+        <div class="row">
+
+            <div class="col-6">
+                <h1 class="display-4">Weather Forecast</h1>
+                <p class="lead">Aplicação em desenvolvimento em Angular 5</p>
+                <p class="lead">
+                    Utilizando a API
+                    <a target="_blank" href="http://openweathermap.com">
+                        OpenWeatherMap
+                    </a>
+                </p>
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" target="_blank" href="https://github.com/msantosfelipe/weather-forecast" role="button">Github</a>
+                </p>
+            </div>
+            <div *ngIf="!cidadeFavorita" class="col-6">
+                <p class="lead">Nenhuma cidade favorita adicionada</p>
+            </div>
+            <div *ngIf="cidadeFavorita" class="col-6">
+                <h1>{{ cidadeFavorita.name }}, {{ cidadeFavorita.sys.country }}</h1>
+                <p class="lead">
+                    Temperatuda: {{ cidadeFavorita.main.temp | temperaturaToCelsiusPipe: 'Kelvin' }}°C
+                </p>
+                <p class="lead">
+                    Máxima: {{ cidadeFavorita.main.temp_max | temperaturaToCelsiusPipe: 'Kelvin' }}°C - Mínima: {{ cidadeFavorita.main.temp_min | temperaturaToCelsiusPipe: 'Kelvin' }}°C
+                </p>
+            </div>
+        </div>
     </div>
 </div>

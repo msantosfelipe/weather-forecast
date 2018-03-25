@@ -5,20 +5,6 @@
     <span>Cidades</span>
 </div>
 <div class="container space-up card">
-    <div *ngIf="exibirAlertWarning" class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-    </div>
-    <div *ngIf="exibirAlertDanger" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-        <span>
-            {{ msgAlertDanger }}
-        </span>
-        <button type="button" class="close" (click)="hideAlertaDanger()" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-    </div>
     <h4>Buscar nova cidade:</h4>
     <div class="container">
         <form>
@@ -71,6 +57,22 @@
                 </div>
             </div>
         </form>
+        <div *ngIf="exibirAlertWarning" class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+            <span>
+                    {{ msgAlertWarning }}
+                </span>
+            <button type="button" class="close" (click)="hideAlertaWarning()" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+        </div>
+        <div *ngIf="exibirAlertDanger" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+            <span>
+                    {{ msgAlertDanger }}
+                </span>
+            <button type="button" class="close" (click)="hideAlertaDanger()" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+        </div>
     </div>
 </div>
 <div class="container space-up card">
@@ -78,12 +80,13 @@
     <div class="container space-up space-down text-center" *ngIf="isVazia(listaCidadesAdicionadas)">
         <span>Nenhuma cidade adicionada</span>
     </div>
-    <div class="container space-up" *ngIf="!isVazia(listaCidadesAdicionadas)">
+    <div class="container space-up" *ngIf="isNotVazia(listaCidadesAdicionadas)">
         <div class="grid-pesquisa">
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                            <td></td>
                             <td>
                                 Cidade:
                             </td>
@@ -94,6 +97,10 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let cidade of listaCidadesAdicionadas">
+                            <td>
+                                <img *ngIf="!cidade.favorita" (click)="favoritarCidade(cidade, true)" class="img-link img-fluid" src="../../../../assets/images/favorite-false.png" alt="Favoritar" />
+                                <img *ngIf="cidade.favorita" (click)="favoritarCidade(cidade, false)" class="img-link img-fluid" src="../../../../assets/images/favorite-true.png" alt="Favoritar" />
+                            </td>
                             <td>{{ cidade.name }}, {{ cidade.sys.country }}</td>
                             <td>
                                 <a target="_blank" [href]="verMapa(cidade)">

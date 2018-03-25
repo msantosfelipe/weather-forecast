@@ -33,4 +33,5 @@ export class Cidade {
             icon: string
         }
     ];
+    favorita = false;
 }

@@ -1,3 +1,4 @@
+import { CidadeService } from './../../../servico/cidade.service';
 import { Cidade } from './../../../model/cidade.model';
 import { WeatherService } from './../../../servico/weather.service';
 import { Router } from '@angular/router';
@@ -16,7 +17,8 @@ export class CidadeCadastroComponent extends BaseComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private weatherService: WeatherService
+    private weatherService: WeatherService,
+    private cidadeService: CidadeService
   ) {
     super();
   }
@@ -28,6 +30,11 @@ export class CidadeCadastroComponent extends BaseComponent implements OnInit {
     this.exibirAlertWarning = false;
     this.msgAlertDanger = '';
     this.msgAlertWarning = '';
+    this.buscarCidadesAdicionadas();
+  }
+
+  buscarCidadesAdicionadas() {
+    this.listaCidadesAdicionadas = this.cidadeService.buscarListaCidades();
   }
 
   limpar() {
@@ -67,9 +74,45 @@ export class CidadeCadastroComponent extends BaseComponent implements OnInit {
   }
 
   adicionar(cidade: Cidade) {
-    this.listaCidadesAdicionadas.push(cidade);
-    const index = this.listaCidadesPesquisadas.indexOf(cidade);
-    this.listaCidadesPesquisadas.splice(index, 1);
+    if (this.cidadeJaAdicionada(cidade)) {
+      this.exibirAlertaWarning('Cidade já adicionada');
+    } else {
+      this.listaCidadesAdicionadas = this.cidadeService.salvarNovaCidade(cidade);
+      const index = this.listaCidadesPesquisadas.indexOf(cidade);
+      this.listaCidadesPesquisadas.splice(index, 1);
+    }
+  }
+
+  cidadeJaAdicionada(cidade: Cidade): boolean {
+    let retorno = false;
+    const lista = this.cidadeService.buscarListaCidades();
+    if (lista) {
+      lista.forEach((city) => {
+        if (city.id === cidade.id) {
+          retorno = true;
+        }
+      });
+    }
+    return retorno;
+  }
+
+  favoritarCidade(cidade: Cidade, flag: boolean) {
+    if (flag && !this.exiteFavorito()) {
+      cidade.favorita = flag;
+    } else {
+      cidade.favorita = false;
+    }
+    this.cidadeService.atualizarCidade(cidade);
+  }
+
+  exiteFavorito(): boolean {
+    let retorno = false;
+    this.cidadeService.buscarListaCidades().forEach((cidade) => {
+      if (cidade.favorita) {
+        retorno = true;
+      }
+    });
+    return retorno;
   }
 
 }

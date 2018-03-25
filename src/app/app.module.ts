@@ -1,3 +1,4 @@
+import { RelatorioAnalytcsModule } from './componente/relatorio-analytcs/relatorio-analytcs.module';
 import { HomeModule } from './componente/home/home.module';
 import { CidadeModule } from './componente/cidade/cidade.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,8 +19,9 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     HttpClientModule,
 
+    HomeModule,
     CidadeModule,
-    HomeModule
+    RelatorioAnalytcsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

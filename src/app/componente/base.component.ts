@@ -9,7 +9,11 @@ export abstract class BaseComponent {
     constructor() { }
 
     isVazia(lista: any[]) {
-        return lista && lista.length === 0;
+        return !lista || (lista && lista.length === 0);
+    }
+
+    isNotVazia(lista: any[]) {
+        return lista && lista.length > 0;
     }
 
     exibirLoading() {
@@ -28,6 +32,16 @@ export abstract class BaseComponent {
     hideAlertaDanger(): void {
         this.msgAlertDanger = '';
         this.exibirAlertDanger = false;
+    }
+
+    exibirAlertaWarning(mensagem: string): void {
+        this.msgAlertWarning = mensagem;
+        this.exibirAlertWarning = true;
+    }
+
+    hideAlertaWarning(): void {
+        this.msgAlertWarning = '';
+        this.exibirAlertWarning = false;
     }
 
 }

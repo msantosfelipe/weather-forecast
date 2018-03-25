@@ -19,4 +19,12 @@ export class WeatherService {
     return this.http.get(`${environment.apiRoot}/find`, { params: param });
   }
 
+  buscarWeatherDataPorId(id: number) {
+    const param = new HttpParams()
+      .append('id', id.toString())
+      .append('lang', 'pt')
+      .append('appid', environment.apiKey);
+    return this.http.get(`${environment.apiRoot}/weather`, { params: param });
+  }
+
 }

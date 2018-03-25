@@ -1,5 +1,6 @@
 $background: #ebf1f1;
 $primary: #f2ae43;
+$vermelho: #72222b;
 // Gerais
 html,
 body {
@@ -24,7 +25,7 @@ body {
 
 .titulo {
     padding-top: 1em;
-    color: #ebf1f1;
+    color: $vermelho;
     font-weight: bolder;
     font-size: 2em;
     padding-left: 2.5em;

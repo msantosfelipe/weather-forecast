@@ -1,22 +1,20 @@
-import { RouterModule } from '@angular/router';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavbarComponent } from './navbar.component';
+import { RelatorioAnalytcsComponent } from './relatorio-analytcs.component';
 
-describe('NavbarComponent', () => {
-  let component: NavbarComponent;
-  let fixture: ComponentFixture<NavbarComponent>;
+describe('RelatorioAnalytcsComponent', () => {
+  let component: RelatorioAnalytcsComponent;
+  let fixture: ComponentFixture<RelatorioAnalytcsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterModule],
-      declarations: [ NavbarComponent ]
+      declarations: [ RelatorioAnalytcsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavbarComponent);
+    fixture = TestBed.createComponent(RelatorioAnalytcsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

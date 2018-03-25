@@ -1,3 +1,4 @@
+import { CidadeService } from './../../servico/cidade.service';
 import { WeatherService } from './../../servico/weather.service';
 import { CompartilhadoModule } from './../../compartilhado/compartilhado.module';
 import { CidadeCadastroComponent } from './cidade-cadastro/cidade-cadastro.component';
@@ -22,7 +23,8 @@ import { LoadingModule, ANIMATION_TYPES } from 'ngx-loading';
     CidadeDetalheComponent
   ],
   providers: [
-    WeatherService
+    WeatherService,
+    CidadeService
   ]
 })
 export class CidadeModule { }
