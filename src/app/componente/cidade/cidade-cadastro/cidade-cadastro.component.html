@@ -34,6 +34,7 @@
                                         <td>
                                             Coordenadas:
                                         </td>
+                                        <td></td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,7 +48,7 @@
                                             {{ cidade.coord.lat }}, {{ cidade.coord.lon }}
                                         </td>
                                         <td>
-                                            <img (click)="adicionar(cidade)" class="img-link img-fluid" src="../../../../assets/images/add.png" alt="Adicionar" />
+                                            <img (click)="adicionar(cidade)" class="img-link" src="../../../../assets/images/add.png" alt="Adicionar" />
                                         </td>
                                     </tr>
                                 </tbody>
@@ -98,8 +99,8 @@
                     <tbody>
                         <tr *ngFor="let cidade of listaCidadesAdicionadas">
                             <td>
-                                <img *ngIf="!cidade.favorita" (click)="favoritarCidade(cidade, true)" class="img-link img-fluid" src="../../../../assets/images/favorite-false.png" alt="Favoritar" />
-                                <img *ngIf="cidade.favorita" (click)="favoritarCidade(cidade, false)" class="img-link img-fluid" src="../../../../assets/images/favorite-true.png" alt="Favoritar" />
+                                <img *ngIf="!cidade.favorita" (click)="favoritarCidade(cidade, true)" class="img-link" src="../../../../assets/images/favorite-false.png" alt="Favoritar" />
+                                <img *ngIf="cidade.favorita" (click)="favoritarCidade(cidade, false)" class="img-link" src="../../../../assets/images/favorite-true.png" alt="Favoritar" />
                             </td>
                             <td>{{ cidade.name }}, {{ cidade.sys.country }}</td>
                             <td>

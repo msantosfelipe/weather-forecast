@@ -16,10 +16,10 @@
                     <a class="btn btn-primary btn-lg" target="_blank" href="https://github.com/msantosfelipe/weather-forecast" role="button">Github</a>
                 </p>
             </div>
-            <div *ngIf="!cidadeFavorita" class="col-6">
+            <div *ngIf="!cidadeFavorita" class="col-12 col-sm-6">
                 <p class="lead">Nenhuma cidade favorita adicionada</p>
             </div>
-            <div *ngIf="cidadeFavorita" class="col-6">
+            <div *ngIf="cidadeFavorita" class="col-12 col-sm-6">
                 <h1>{{ cidadeFavorita.name }}, {{ cidadeFavorita.sys.country }}</h1>
                 <p class="lead">
                     Temperatuda: {{ cidadeFavorita.main.temp | temperaturaToCelsiusPipe: 'Kelvin' }}°C
