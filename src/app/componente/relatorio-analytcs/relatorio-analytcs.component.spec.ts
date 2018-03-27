@@ -1,3 +1,6 @@
+import { CommonModule } from '@angular/common';
+import { RouterModule, Router } from '@angular/router';
+import { CompartilhadoModule } from './../../compartilhado/compartilhado.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RelatorioAnalytcsComponent } from './relatorio-analytcs.component';
@@ -8,9 +11,18 @@ describe('RelatorioAnalytcsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RelatorioAnalytcsComponent ]
+      imports: [
+        CompartilhadoModule
+      ],
+      declarations: [RelatorioAnalytcsComponent],
+      providers: [
+        {
+          provide: Router,
+          useClass: class { navigate = jasmine.createSpy('navigate'); }
+        }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,6 +1,11 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CompartilhadoModule } from './../../compartilhado/compartilhado.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
+import { Router } from '@angular/router';
+import { CidadeService } from '@service/cidade.service';
+import { WeatherService } from '@service/weather.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -8,7 +13,19 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      imports: [
+        CompartilhadoModule,
+        HttpClientTestingModule
+      ],
+      declarations: [ HomeComponent ],
+      providers: [
+        {
+          provide: Router,
+          useClass: class { navigate = jasmine.createSpy('navigate'); }
+        },
+        CidadeService,
+        WeatherService
+      ]
     })
     .compileComponents();
   }));

@@ -1,7 +1,7 @@
 import { Cidade } from './../model/cidade.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { environment } from '../../environments/environment';
+import { environment } from '@env/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable()

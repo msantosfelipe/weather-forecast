@@ -1,6 +1,6 @@
 import { Cidade } from './../../model/cidade.model';
-import { WeatherService } from './../../servico/weather.service';
-import { CidadeService } from './../../servico/cidade.service';
+import { WeatherService } from '@service/weather.service';
+import { CidadeService } from '@service/cidade.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

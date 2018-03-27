@@ -1,6 +1,8 @@
+import { CompartilhadoModule } from './../../../compartilhado/compartilhado.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CidadeDetalheComponent } from './cidade-detalhe.component';
+import { Router } from '@angular/router';
 
 describe('CidadeDetalheComponent', () => {
   let component: CidadeDetalheComponent;
@@ -8,9 +10,18 @@ describe('CidadeDetalheComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CidadeDetalheComponent ]
+      imports: [
+        CompartilhadoModule
+      ],
+      declarations: [CidadeDetalheComponent],
+      providers: [
+        {
+          provide: Router,
+          useClass: class { navigate = jasmine.createSpy('navigate'); }
+        },
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

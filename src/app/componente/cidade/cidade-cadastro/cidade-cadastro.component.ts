@@ -1,9 +1,10 @@
-import { CidadeService } from './../../../servico/cidade.service';
+import { CidadeService } from '@service/cidade.service';
 import { Cidade } from './../../../model/cidade.model';
-import { WeatherService } from './../../../servico/weather.service';
+import { WeatherService } from '@service/weather.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '../../base.component';
+
 @Component({
   selector: 'app-cidade-cadastro',
   templateUrl: './cidade-cadastro.component.html',
